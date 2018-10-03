@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Payment_method</th>
+          <th>Amount</th>
+          <th>Spent_on</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for expense in expenses %}
+          <tr>
+            <td>{{ expense.name }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <td>{{ expense.payment_method }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <td>{{ expense.amount }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <td>{{ expense.spent_on }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <td>{{ expense.date }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p>Total amount spent: {{ amount }}</p>
+  </div>
+{% endblock body %}

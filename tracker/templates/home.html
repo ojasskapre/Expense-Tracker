@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block body %}
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Payment_method</th>
+          <th>Amount</th>
+          <th>Spent_on</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for expense in expenses %}
+          <tr>
+            <td><a href="{% url 'expense_detail' expense.name %}">{{ expense.name }}</a> <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <td>{{ expense.payment_method }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <td>{{ expense.amount }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <td>{{ expense.spent_on }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <td>{{ expense.date }} <a><i class="fas fa-edit" title="update record"></i></a></td>
+            <!-- <td><form method="post">
+                {% csrf_token %}
+                <input type="submit" name="mail" value="mail">
+            </form></td> -->
+            <td><a href="{% url 'delete_detail' expense.id %}"><i class="glyphicon glyphicon-remove" title="remove from list" style="color:red;"></i></a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="add_detail"><button class="btn btn-success">Add</button></a>
+  </div>
+{% endblock body %}
